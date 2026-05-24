@@ -4,18 +4,18 @@
 #+TITLE: Dotfiles
 
 #+BEGIN_QUOTE
-Thou shalt not pollute your neighbor's ~/ -- Exodus 20:17
+My ~/ is my castle. 
 #+END_QUOTE
 
 * Identity
 Set name and e-mail.
 
 #+BEGIN_SRC fundamental :noweb-ref name :exports none
-  Nicolas De Jaeghere
+  Bart Coppens
 #+END_SRC
 
 #+BEGIN_SRC fundamental :noweb-ref email :exports none
-  nicolas@dejaeghe.re
+  bart.coppens@gmx.com
 #+END_SRC
 
 #+BEGIN_SRC conf :tangle stow/env/.config/environment.d/10-identity.conf :noweb yes
@@ -37,10 +37,10 @@ Then, set [[https://freedesktop.org/wiki/Software/xdg-user-dirs/][user directori
 #+BEGIN_SRC conf :noweb-ref user-dirs :tangle stow/xdg/.config/user-dirs.dirs
   XDG_DESKTOP_DIR="$HOME/.Bureaublad"
   XDG_DOCUMENTS_DIR="$HOME/Documenten"
-  XDG_DOWNLOAD_DIR="$HOME/Inbox/tmp"
+  XDG_DOWNLOAD_DIR="$HOME/Downloads"
   XDG_MUSIC_DIR="$HOME/Muziek"
   XDG_PICTURES_DIR="$HOME/Afbeeldingen"
-  XDG_PUBLICSHARE_DIR="$HOME/Delen"
+  XDG_PUBLICSHARE_DIR="$HOME/Gedeeld"
   XDG_TEMPLATES_DIR="$HOME/Sjablonen"
   XDG_VIDEOS_DIR="$HOME/Video's"
 #+END_SRC
