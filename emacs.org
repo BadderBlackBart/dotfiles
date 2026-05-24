@@ -2476,17 +2476,12 @@ Bury unneeded buffers, computers have more than enough memory.
     :config
     (setq consult-narrow-key "C-+")
     (setq consult-buffer-sources
-          '(consult--source-buffer
-            consult--source-recent-file
-            consult--source-bookmark
-            consult--source-hidden-buffer
-            koek-cslt/exwm-buffer-source
-            koek-cslt/dir-buffer-source
-            koek-cslt/doc-buffer-source
-            koek-cslt/shell-buffer-source
-            koek-cslt/web-buffer-source
-            consult--source-project-buffer
-            consult--source-project-recent-file))
+          (cl-union consult-buffer-sources
+                    '(koek-cslt/exwm-buffer-source
+                      koek-cslt/dir-buffer-source
+                      koek-cslt/doc-buffer-source
+                      koek-cslt/shell-buffer-source
+                      koek-cslt/web-buffer-source)))
     (setq consult-bookmark-narrow
           '((?f "File" bookmark-default-handler)
             (?w "Web" koek-bmrk/handle-generic-url)
