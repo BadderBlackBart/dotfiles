@@ -9901,6 +9901,31 @@ Show agenda as initial buffer.
   (setq initial-buffer-choice #'koek/get-initial-buffer)
 #+END_SRC
 
+* Bartoli's customizations
+
+** PlatformIO
+Add platformIO binaries to emacs' path, so compilation en uploading
+from inside Emacs is possible.
+
+#+BEGIN_SRC emacs-lisp
+(let ((pipx-path (expand-file-name "~/.local/bin")))
+  (setenv "PATH" (concat pipx-path ":" (getenv "PATH")))
+  (add-to-list 'exec-path pipx-path))
+#+END_SRC
+
+Look for platformio.ini in the directory structure en compile from there.
+#+BEGIN_SRC emacs-lisp
+  (defun compile-from-rootDir ()
+    "Make platform.ini the root directory for compilation."
+    (let ((root (locate-dominating-file default-directory "platformio.ini")))
+      (when root
+        (setq-local compile-command
+                    (concat "pio run -d " (expand-file-name root) " -t upload")))))
+
+  (add-hook 'c++-mode-hook #'compile-from-rootDir)
+  (add-hook 'c-mode-hook #'compile-from-rootDir)
+#+END_SRC
+
 * Footer
 #+BEGIN_SRC emacs-lisp
   ;;; init.el ends here
